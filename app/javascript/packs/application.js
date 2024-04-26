@@ -17,3 +17,7 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 //= require jquery
 //= require semantic-ui
+
+$(document).on('turbolinks:load', function() {
+    $('.ui.dropdown').dropdown();
+})
