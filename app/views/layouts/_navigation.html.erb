@@ -1,6 +1,7 @@
         <a class=" item">
           Ping Ping
         </a>
+        <%= link_to "Ping Ping", root_path, class: "item" %>
         <a class="item">
           Messages
         </a>
@@ -9,7 +10,7 @@
             Account <i class="dropdown icon"></i>
             <div class="menu">
               <a class="item">Log out</a>
-              <a class="item">Login</a>
+              <%= link_to "Log in", login_path, class: "item" %>
               <a class="item">Sign up</a>
             </div>
           </div>
