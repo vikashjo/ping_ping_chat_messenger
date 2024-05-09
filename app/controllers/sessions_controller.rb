@@ -1,8 +1,5 @@
 class SessionsController < ApplicationController
-    def index
-        
-    end
-
+    # before_action :logged_in_redirect, only: [:new, :create]
     def new
 
     end
@@ -10,7 +7,7 @@ class SessionsController < ApplicationController
     def create 
         user = User.find_by(username: params[:session][:username].downcase)
         if user && user.authenticate(params[:session][:password])
-            sesson[:user_id] = user.id
+            session[:user_id] = user.id
             flash[:success] = " You are logged in successfully"
             redirect_to root_path 
         else
@@ -23,5 +20,14 @@ class SessionsController < ApplicationController
         session[:user_id] = nil
         flash[:notice] = "You are logged out successfully"
         redirect_to login_path
+    end
+
+    private
+
+    def logged_in_redirect
+        if logged_in?
+            flash[:error] = "You are already logged in"
+            redirect_to root_path
+        end
     end
 end
