@@ -1,27 +1,3 @@
-<%# <div class="ui horizontal list">
-  <div class="item">
-    <img class="ui medium circular image" src="/images/avatar2/dry.png">
-    <div class="content">
-      <div class="ui sub header">Molly</div>
-      Coordinator
-    </div>
-  </div>
-  <div class="item">
-    <img class="ui medium circular image" src="/images/avatar2/small/elyse.png">
-    <div class="content">
-      <div class="ui sub header">Elyse</div>
-      Developer
-    </div>
-  </div>
-  <div class="item">
-    <img src="/images/avatar2/small/eve.png" class="ui medium circular image">
-    <div class="content">
-      <div class="ui sub header">Eve</div>
-      Project Manager
-    </div>
-  </div>
-</div> %>
-
 <h2 class="ui center aligned medium icon header">
   <i class="circular blue chat icon"></i>
   Friends
@@ -35,15 +11,15 @@
           <%= render @messages %>
         </div>
       </div>
-      <div class="extra content>
-        <form class="ui reply form">
+      <div class="extra content">
+        <%= form_for(@message, html: {class: "ui reply form", role: "form"}, url: message_path) do |f| %>
           <div class="field">
             <div class="ui fluid icon input">
-              <input type="text" placeholder="Enter a reply...">
-              <i class="bordered inverted black edit icon"></i> 
+              <%= f.text_field :body %>
+              <%= f.button '<i class="bordered inverted black edit icon"></i>'.html_safe %> 
             </div>
           </div>
-        </form>
+        <% end %>
       </div>
     </div>
   </div>
